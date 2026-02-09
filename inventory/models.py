@@ -49,10 +49,12 @@ class Equipment(models.Model):
 class LabSettings(models.Model):
     lab = models.ForeignKey(Lab, on_delete=models.CASCADE)
     student_intake = models.IntegerField()
-    scaling_factor = models.FloatField()
+    scaling_factor = models.FloatField(default=1.0)
+    scaling_applied = models.BooleanField(default=False)
 
     def __str__(self):
-        return f"Settings - {self.lab.name}"
+        return f"{self.lab.name} Settings"
+
 
 
 #Alert
